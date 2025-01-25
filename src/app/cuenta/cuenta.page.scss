@@ -1,0 +1,17 @@
+.custom-item {
+    --padding-start: 0; /* Elimina el padding inicial predeterminado */
+    display: flex;
+    flex-direction: column; /* Organiza label e input en columna */
+    align-items: flex-start;
+    gap: 5px;
+  
+    ion-label {
+      margin-bottom: 8px; /* Ajusta la separación del label */
+      font-size: 14px; 
+      display: block;/* Cambia el tamaño del texto si es necesario */
+    }
+  
+    ion-input {
+      width: 100%; /* Asegura que el input ocupe el ancho completo */
+    }
+  }

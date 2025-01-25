@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Recuperar clave</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked" >Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="txt_cedula" (focusout)="vcedula()"></ion-input>
+  </ion-item>
+  <ion-label color="info">{{mensajeusuario}}</ion-label>
+
+  <ion-item>
+    <ion-label position="stacked">Clave</ion-label>
+    <ion-input type="password"  [disabled]="usuariovalido" [(ngModel)]="txt_clave" (focusout)="vclave()"></ion-input>
+  </ion-item>
+
+  
+  <ion-item>
+    <ion-label position="stacked">Confirmar clave</ion-label>
+    <ion-input type="password"  [disabled]="usuariovalido" [(ngModel)]="txt_clave_conf" (focusout)="vclave()"></ion-input>
+  </ion-item>
+  <ion-label color="danger">{{mensaje}}</ion-label>
+
+  
+  <ion-item>
+    <ion-button class="success" expand="block" (click)="recuperar()" [disabled]="enableGuardar">Recuperar</ion-button>
+    <ion-button class="secundary" expand="block" (click)="cancelar()">Cancelar</ion-button>
+  </ion-item> 
+</ion-content>

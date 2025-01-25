@@ -1,20 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Agenda
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="contenedor">
+    <ion-item>
+      <ion-label>Bienvenidos</ion-label>
+    </ion-item>
+    <ion-item>
+      <img src="assets/img/agenda_3.png" style="display: block; width:20%;height: auto;margin-left: auto;margin-right: auto;">
+    </ion-item>
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title>Inicio de sesion</ion-card-title>
+      </ion-card-header>
+      <ion-card-content> 
+        <ion-item>
+          <ion-label position="floating" >Usuario</ion-label>
+          <ion-input type="text" [(ngModel)]="txt_usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Clave</ion-label>
+          <ion-input type="password" [(ngModel)]="txt_clave"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-button expand="block" color="success" (click)="login()" id="show_loading">Iniciar sesion</ion-button>
+        </ion-item>
+      
+        <ion-item>
+          <ion-buttons slot="start">
+            <ion-button (click)="crear()" fill="clear" size="small" color="medium"  fill="clear">
+              Crear cuenta
+            </ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="recuperar()" fill="clear" size="small" color="medium"  fill="clear">
+              Recuperar clave
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      </ion-card-content>
+    </ion-card>
+    <ion-loading trigger="show_loading" message="Loading..." [duration]="3000" spinner="circles"></ion-loading>
   </div>
 </ion-content>
