@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class MenuPage implements OnInit {
   nombre: string = "";
   codigo: string = "";
+  contactos:any=[];
+
 
   constructor(
     private servicio: AccesoService,
@@ -22,8 +24,10 @@ export class MenuPage implements OnInit {
       this.nombre = res;
     });
     this.servicio.getSession('idpersona').then((res:any)=>{
-      this.codigo = res;
+      this.codigo=res;
+      this.lcontactos();
     });
+   
    }
 
   ngOnInit() {
@@ -37,10 +41,45 @@ export class MenuPage implements OnInit {
     this.router.navigate(['/perfil']);
   }
 
+
   cerrarSesion() {
     // Lógica para cerrar sesión, como limpiar datos almacenados
     console.log('Sesión cerrada');
     this.router.navigate(['/home']); // Redirige a la página de inicio de sesión
+  }
+
+
+
+  lcontactos(){
+    let datos= {
+      "accion": 'consultar',
+      "codigo":this.codigo
+    }
+    this.servicio.postData(datos).subscribe(
+      (response:any)=>{
+        if(response.estado){
+          this.contactos = response.contactos;
+          console.log(this.contactos);
+        }else{
+          this.servicio.showToast(response.mensaje, 2000);
+        }
+      },
+      (error)=>{
+        this.servicio.showToast('Error de conexión', 2000);
+      }
+    );
+  }
+  nuevo(){
+    this.navCtrl.navigateForward('/contactos');
+  }
+
+  editar(cod_contacto:any){
+    this.navCtrl.navigateRoot('/acontacto');
+    this.servicio.createSesion('cod_contacto', cod_contacto);
+  }
+  eliminar(cod_contacto:any){
+    this.navCtrl.navigateRoot('/econtacto');
+    this.servicio.createSesion('cod_contacto', cod_contacto);
   }
 
 }

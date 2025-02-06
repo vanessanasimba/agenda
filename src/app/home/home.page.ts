@@ -33,6 +33,7 @@ export class HomePage {
           console.log(resp.persona);
           this.acceso.createSesion('idpersona',resp.persona.codigo);
           this.acceso.createSesion('persona', resp.persona.nombre);
+          sessionStorage.setItem('idpersona', resp.persona.codigo)
           this.navCtrl.navigateRoot('/menu');
         }else{
           this.intentos +=1;

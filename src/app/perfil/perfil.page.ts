@@ -30,8 +30,8 @@ export class PerfilPage implements OnInit {
 
   cargarPerfil(codigo: string) {
     let datos = {
-      accion: 'dato',
-      codigo: codigo
+      "accion": 'datoPerfil',
+      "codigo": codigo
     }
     console.log(codigo);
     this.servicio.postData(datos).subscribe((resp:any) => {

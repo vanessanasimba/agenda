@@ -27,6 +27,18 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'contactos',
+    loadChildren: () => import('./contactos/contactos.module').then( m => m.ContactosPageModule)
+  },
+  {
+    path: 'acontacto',
+    loadChildren: () => import('./acontacto/acontacto.module').then( m => m.AcontactoPageModule)
+  },
+  {
+    path: 'econtacto',
+    loadChildren: () => import('./econtacto/econtacto.module').then( m => m.EcontactoPageModule)
+  },
 ];
 
 @NgModule({
